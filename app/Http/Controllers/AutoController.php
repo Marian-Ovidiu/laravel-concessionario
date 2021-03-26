@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Auto;
 
 class AutoController extends Controller
 {
@@ -34,7 +35,14 @@ class AutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $auto = new Auto();
+        $auto->fill($data);
+        $auto->save();
+
+        $newAuto = Auto::orderBy('id', 'desc')->first();
+
+        return redirect()->route('auto.show', $newAuto);
     }
 
     /**

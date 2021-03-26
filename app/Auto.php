@@ -8,5 +8,5 @@ class Auto extends Model
 {
     protected $table = 'auto';
 
-    protected $fillable = ['name_model', 'cubic_capacity', 'max_speed', 'pic'];
+    protected $fillable = ['model_name', 'cubic_capacity', 'max_speed', 'pic'];
 }
