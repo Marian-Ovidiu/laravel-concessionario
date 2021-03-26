@@ -14,7 +14,9 @@ class AutoController extends Controller
      */
     public function index()
     {
-        //
+        $auto = Auto::all();
+
+        return view('auto.index', compact('auto'));
     }
 
     /**
@@ -35,6 +37,9 @@ class AutoController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validateForm($request);
+
         $data = $request->all();
         $auto = new Auto();
         $auto->fill($data);
@@ -89,4 +94,17 @@ class AutoController extends Controller
     {
         //
     }
+
+    protected function validateForm(Request $request) {
+
+        $request -> validate([
+
+            'model_name' => 'required|max:255',
+            'cubic_capacity' => 'required|numeric|between:1000, 10000',
+            'max_speed' => 'required|numeric|between:50, 500'
+
+        ]);
+
+    }
+
 }
