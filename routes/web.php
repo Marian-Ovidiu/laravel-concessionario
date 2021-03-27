@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'AutoController@index')->name('index');
 
 
 Route::resource('auto', AutoController::class);

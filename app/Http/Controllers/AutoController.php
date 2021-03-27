@@ -67,9 +67,9 @@ class AutoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Auto $auto)
     {
-        //
+        return view('auto.edit', compact('auto'));
     }
 
     /**
@@ -79,9 +79,12 @@ class AutoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Auto $auto)
     {
-        //
+        $data = $request->all();
+        $auto->update($data);
+
+        return redirect()->route('auto.show', compact('auto'));
     }
 
     /**
@@ -90,9 +93,12 @@ class AutoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Auto $auto)
     {
-        //
+        $auto->delete();
+
+        return redirect()->route('index');
+
     }
 
     protected function validateForm(Request $request) {

@@ -7,6 +7,10 @@
     <title>Laravel Autoconcessionario - @yield('title')</title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}" type="text/css">
     <script src="{{asset('js/app.js')}}"></script>
+
+        <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+
 </head>
 <body>
 
